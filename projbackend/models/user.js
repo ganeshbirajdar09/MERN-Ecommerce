@@ -42,6 +42,7 @@ var userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+//Virtual field 
 userSchema
   .virtual("password")
   .set(function (password) {
@@ -53,6 +54,7 @@ userSchema
     return this._password;
   });
 
+//method to verify the password
 userSchema.methods = {
   authenticate: function (plainpassword) {
     return this.securePassword(plainpassword) === this.encry_password;
